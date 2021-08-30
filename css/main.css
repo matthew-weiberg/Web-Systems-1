@@ -1,0 +1,9 @@
+.dropdown-item:hover {
+    background-color: rgb(201, 201, 201) !important;
+}
+
+#body-logo {
+    margin: 20px 10px;
+    float: left;
+    width: 200px;
+}
