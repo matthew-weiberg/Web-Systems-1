@@ -167,13 +167,25 @@
                             <input type="text" class="form-control" id="InputBirthDate" placeholder="Select Date..." autocomplete="off" required>
                             <div class="invalid-feedback">Please select a valid birth date.</div>
                         </div>
+                        <div class="col-md-3 pt-4">
+                            <div class="g-recaptcha" data-sitekey="6Le1nF4cAAAAABKF2iOpdHYhDR1HIlKS3H8go56G" data-callback="enableBtn" data-expired-callback="expiredRecaptchaCallback"></div>
+                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                            <div class="help-block with-errors"></div>
+                        </div>  
                         <div class="col-12 pt-5">
-                            <button class="btn btn-primary" type="submit" id="submitBtn" onclick="getUserInfo()">Submit form</button>
+                            <button class="btn btn-primary" type="submit" id="submitBtn" onclick="getUserInfo()" disabled>Submit form</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <script>
+    function enableBtn() {
+        document.getElementById("submitBtn").disabled = false;
+    }
+        </script>
+
 
         <!-- Content for Footer Bar -->
         <div class="bg-dark text-lg-start text-muted fixed-bottom p-3">
