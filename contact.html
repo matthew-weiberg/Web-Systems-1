@@ -100,13 +100,13 @@
 
         <!-- Content for Body -->
         <div class="container-fluid pt-4 pb-5 pl-3 d-flex justify-content-center">
-            <div class="card " style="width: 50rem;">
+            <div class="card " style="width: 50rem;" id="UserInputForm">
                 <div class="card-header"><h5>Form Validation with JavaScript</h5></div>
                 <div class="card-body">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" role="form" novalidate>
                         <div class="col-md-4">
                             <label for="InputFirstName" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="InputFirstName" placeholder="Enter First Name" required>
+                            <input type="text" class="form-control" id="InputFirstName" data-error="Please enter your name" placeholder="Enter First Name" required>
                             <div class="valid-feedback">Valid first name!</div>
                             <div class="invalid-feedback">Please enter a first name.</div>
                         </div>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-md-6 pt-4">
                             <label for="InputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" placeholder="Enter City" required>
+                            <input type="text" class="form-control" id="InputCity" placeholder="Enter City" required>
                             <div class="valid-feedback">Valid city!</div>
                             <div class="invalid-feedback">Please provide a valid city.</div>
                         </div>
@@ -141,13 +141,13 @@
                         </div>
                         <div class="col-md-3 pt-4">
                             <label for="InputZipCode" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="validationCustom05" pattern=".{5}" placeholder="12345" required>
+                            <input type="text" class="form-control" id="InputZipCode" pattern=".{5}" placeholder="12345" required>
                             <div class="valid-feedback">Valid zip code!</div>
                             <div class="invalid-feedback">Please provide a valid zip code with 5 digits.</div>
                         </div>
                         <div class="col-md-12 pt-4">
                             <label for="InputTextarea" class="form-label">Textarea</label>
-                            <textarea class="form-control" id="validationTextarea" placeholder="Input Text Message Here" required></textarea>
+                            <textarea class="form-control" id="InputTextarea" placeholder="Input Text Message Here" required></textarea>
                             <div class="valid-feedback">Valid text message!</div>
                             <div class="invalid-feedback">Please enter a message in the textarea.</div>
                         </div>
@@ -167,19 +167,13 @@
                             <input type="text" class="form-control" id="InputBirthDate" placeholder="Select Date..." autocomplete="off" required>
                             <div class="invalid-feedback">Please select a valid birth date.</div>
                         </div>
-                        <div class="col-md-3 pt-4">
-                            <div class="g-recaptcha" data-sitekey="6Le1nF4cAAAAABKF2iOpdHYhDR1HIlKS3H8go56G" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
-                            <div class="help-block with-errors"></div>
-                        </div>  
                         <div class="col-12 pt-5">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" type="submit" id="submitBtn" onclick="getUserInfo()">Submit form</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
 
         <!-- Content for Footer Bar -->
         <div class="bg-dark text-lg-start text-muted fixed-bottom p-3">
