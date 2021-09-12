@@ -36,18 +36,18 @@ for(var i = 0; i < options.length; i++) {
     select.appendChild(el);
 }
 
-
+// create mask for phone number
 $(document).ready(function(){
-    $('#birth-date').mask('00/00/0000');
-    $('#phone-number').mask('(000)-000-0000');
+    $('#InputPhoneNumber').mask('(000)-000-0000');
   });
   
-
-    $(document).ready(function(){
-     
-      $('#datepicker').datepicker({
+// create date picker with end date applied
+$(document).ready(function(){
+    $('#InputBirthDate').datepicker({
         format: "mm/dd/yyyy",
         endDate: new Date("2021-09-11")
-      });
-    
     });
+});
+
+// store user information
+first_name      = document.getElementById("title").value;
