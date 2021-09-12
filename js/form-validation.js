@@ -12,6 +12,14 @@
             event.stopPropagation()
             }
 
+            else if (form.checkValidity() == true) {
+                event.preventDefault();
+                getUserInfo();
+                $('#UserInputForm').fadeOut('slow', function(){
+                    $('#UserInputConfirm').fadeIn('slow');
+                });
+           }
+
             form.classList.add('was-validated')
         }, false)
         })
@@ -19,7 +27,7 @@
 
 
 // populate dropdown menu with list of states
-var select = document.getElementById("selectState");
+var select = document.getElementById('selectState');
 var options = [
     'Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia',
     'Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan',
@@ -30,7 +38,7 @@ var options = [
 
 for(var i = 0; i < options.length; i++) {
     var opt = options[i];
-    var el = document.createElement("option");
+    var el = document.createElement('option');
     el.textContent = opt;
     el.value = opt;
     select.appendChild(el);
@@ -44,10 +52,49 @@ $(document).ready(function(){
 // create date picker with end date applied
 $(document).ready(function(){
     $('#InputBirthDate').datepicker({
-        format: "mm/dd/yyyy",
-        endDate: new Date("2021-09-11")
+        format: 'mm/dd/yyyy',
+        endDate: new Date('2021-09-11')
     });
 });
 
 // store user information
-first_name      = document.getElementById("title").value;
+function getUserInfo() {
+    first_name      = document.getElementById('InputFirstName').value;
+    last_name       = document.getElementById('InputLastName').value;
+    user_name       = document.getElementById('InputUserName').value;
+    street          = document.getElementById('InputStreet').value;
+    city            = document.getElementById('InputCity').value;
+    state           = document.getElementById('selectState').value;
+    zipcode         = document.getElementById('InputZipCode').value;
+    textarea        = document.getElementById('InputTextarea').value;
+    email           = document.getElementById('InputEmail').value;
+    phone_number    = document.getElementById('InputPhoneNumber').value;
+    birth_date      = document.getElementById('InputBirthDate').value;
+
+    document.getElementById('UserFullName').innerHTML = first_name + ' ' + last_name;
+    document.getElementById('UserFullUserName').innerHTML = user_name;
+    document.getElementById('UserFullAddress').innerHTML = street + ', ' + city + ', ' + state + ' - ' + zipcode;
+    document.getElementById('UserFullContactInfo').innerHTML = email + ' | ' + phone_number;
+    document.getElementById('UserBirthDate').innerHTML = birth_date;
+    document.getElementById('UserMessage').innerHTML = textarea;
+
+}
+
+// function to control use edit of original information
+$('#editBtn').click(function(e){    
+    $('#UserInputConfirm').fadeOut('slow', function(){
+        $('#UserInputForm').fadeIn('slow');
+    });
+});
+
+// function to control sending email
+$(function () {
+    $('#sendEmail').click(function (event) {
+    var email = 'ustropics@gmail.com';
+    var subject = 'User Input from ' + first_name + ' ' + last_name;
+    var emailBody = 'Full Name: ' + first_name + ' ' + last_name + "%0D%0AUsername: " + user_name + "%0D%0AAddress: " + street + ', ' + city + ', ' + state + ' - ' + zipcode +
+    "%0D%0AContact Info: " + email + ' | ' + phone_number + "%0D%0ABirth Date: " + birth_date + "%0D%0AMessage: " + textarea;
+    document.location = 'mailto:'+email+'?subject='+subject+'&body='+emailBody;
+    });
+});
+

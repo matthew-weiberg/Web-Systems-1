@@ -11,3 +11,11 @@
 .datepicker {
     transform: translate(-10px, 260px);
 }
+
+#UserInputConfirm {
+    display: none;
+}
+
+#UserFullName {
+    text-transform: capitalize;
+}
