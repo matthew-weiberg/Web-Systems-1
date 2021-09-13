@@ -50,12 +50,15 @@ $(document).ready(function(){
   });
   
 // create date picker with end date applied
+var date = (new Date()).toISOString().split('T')[0];
 $(document).ready(function(){
     $('#InputBirthDate').datepicker({
         format: 'mm/dd/yyyy',
-        endDate: new Date('2021-09-11')
+        endDate: new Date(date)
     });
 });
+
+
 
 // store user information
 function getUserInfo() {
@@ -84,6 +87,11 @@ function getUserInfo() {
 $('#editBtn').click(function(e){    
     $('#UserInputConfirm').fadeOut('slow', function(){
         $('#UserInputForm').fadeIn('slow');
+    });
+});
+$('#sendEmail').click(function(e){    
+    $('#UserInputConfirm').fadeOut('slow', function(){
+        $('#UserInputSuccess').fadeIn('slow');
     });
 });
 
